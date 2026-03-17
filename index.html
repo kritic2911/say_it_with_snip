@@ -5,63 +5,69 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div id="app">
+  <div id="app">
 
-  <div id="upload-screen">
-    <div>
-      <div class="title">DESTROY<br>THIS PDF</div>
-      <div class="subtitle">real pages. real destruction.</div>
-    </div>
-    <div class="drop-zone" id="drop-zone">
-      <div class="drop-icon">📄</div>
-      <div class="drop-text">DROP PDF HERE · OR CLICK TO BROWSE</div>
-      <input type="file" accept=".pdf" id="file-input">
-    </div>
-  </div>
-
-  <div id="choice-screen">
-    <div>
-      <div class="title" style="font-size:clamp(2rem,5vw,3.5rem)">CHOOSE<br>YOUR FATE</div>
-    </div>
-    <div class="file-info">
-      <span class="file-name" id="show-filename">—</span><br>
-      <span id="show-pages">0</span> pages detected
-    </div>
-    <div class="choice-row">
-      <div class="choice-btn tear-btn" id="btn-tear">
-        <div class="choice-icon">✂️</div>
-        <div class="choice-label">TEAR</div>
-        <div class="choice-sub">ripped apart</div>
+    <!-- UPLOAD -->
+    <div class="screen active" id="upload-screen">
+      <div>
+        <div class="big-title">DESTROY<br>THIS PDF</div>
+        <div class="sub">every page meets its own fate</div>
       </div>
-      <div class="choice-btn burn-btn" id="btn-burn">
-        <div class="choice-icon">🔥</div>
-        <div class="choice-label">BURN</div>
-        <div class="choice-sub">reduced to ash</div>
+      <div class="drop-zone" id="drop-zone">
+        <div class="drop-icon">📄</div>
+        <div class="drop-hint">DROP PDF HERE · CLICK TO BROWSE</div>
+        <input type="file" accept=".pdf" id="file-input">
+      </div>
+      <div class="modes-preview">
+        <div class="mode-pill" style="border-color:#c8401830;color:#c84018aa;">🔥 burn</div>
+        <div class="mode-pill" style="border-color:#5080c030;color:#5080c0aa;">✂️ tear</div>
+        <div class="mode-pill" style="border-color:#c8a03030;color:#c8a030aa;">🏀 basketball</div>
+        <div class="mode-pill" style="border-color:#40b06030;color:#40b060aa;">🎮 breakout</div>
       </div>
     </div>
-  </div>
 
-  <div id="anim-screen">
-    <div class="anim-header">
-      <div class="anim-title" id="anim-title">TEARING</div>
-      <div class="page-counter" id="page-counter">PAGE 0 / 0</div>
-    </div>
-    <div class="stage" id="stage">
-      <canvas id="page-canvas"></canvas>
-      <canvas id="half-left"></canvas>
-      <canvas id="half-right"></canvas>
-      <div id="debris-layer"></div>
-    </div>
-    <div class="progress-track">
-      <div class="progress-fill" id="progress-fill"></div>
-    </div>
-    <div class="done-section">
-      <div class="status-text" id="status-text">loading...</div>
-      <button class="restart-btn" id="restart-btn">↩ destroy another</button>
-    </div>
-  </div>
+    <!-- ANIM -->
+    <div class="screen" id="anim-screen">
+      <div class="anim-header" style="width:min(400px,96vw)">
+        <div class="anim-label" id="anim-label">—</div>
+        <div class="page-ctr" id="page-ctr">— / —</div>
+      </div>
 
-</div>
+      <div class="stage" id="stage">
+        <canvas id="page-canvas"></canvas>
+
+        <!-- basket game overlay -->
+        <div id="basket-ui">
+          <div id="tries-display">
+            <div class="try-dot" id="dot0"></div>
+            <div class="try-dot" id="dot1"></div>
+            <div class="try-dot" id="dot2"></div>
+          </div>
+          <canvas id="throw-hint"></canvas>
+          <div id="basket-ball"></div>
+          <div id="basket-bin">🗑️</div>
+        </div>
+
+        <!-- breakout game overlay -->
+        <div id="breakout-ui">
+          <div id="bk-lives"></div>
+          <canvas id="bk-canvas"></canvas>
+          <div id="bk-msg"></div>
+        </div>
+
+        <div id="debris"></div>
+      </div>
+
+      <div class="prog-track">
+        <div class="prog-fill" id="prog-fill"></div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:.7rem;">
+        <div class="status" id="status-text"></div>
+        <button class="restart-btn" id="restart-btn">↩ destroy another</button>
+      </div>
+    </div>
+
+  </div><!-- #app -->
 
 <!-- Load PDF.js from CDN -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
