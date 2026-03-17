@@ -1,13 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-<meta charset="UTF-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DESTROY THIS PDF</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
   <div id="app">
 
-    <!-- UPLOAD -->
     <div class="screen active" id="upload-screen">
       <div>
         <div class="big-title">DESTROY<br>THIS PDF</div>
@@ -19,58 +22,52 @@
         <input type="file" accept=".pdf" id="file-input">
       </div>
       <div class="modes-preview">
-        <div class="mode-pill" style="border-color:#c8401830;color:#c84018aa;">🔥 burn</div>
-        <div class="mode-pill" style="border-color:#5080c030;color:#5080c0aa;">✂️ tear</div>
-        <div class="mode-pill" style="border-color:#c8a03030;color:#c8a030aa;">🏀 basketball</div>
-        <div class="mode-pill" style="border-color:#40b06030;color:#40b060aa;">🎮 breakout</div>
+        <div class="mode-pill" style="color:#c84018bb;">🔥 burn</div>
+        <div class="mode-pill" style="color:#5080c0bb;">✂️ tear</div>
+        <div class="mode-pill" style="color:#c8a030bb;">🏀 basketball</div>
+        <div class="mode-pill" style="color:#40b060bb;">🎮 breakout</div>
       </div>
     </div>
 
-    <!-- ANIM -->
     <div class="screen" id="anim-screen">
       <div class="anim-header" style="width:min(400px,96vw)">
         <div class="anim-label" id="anim-label">—</div>
         <div class="page-ctr" id="page-ctr">— / —</div>
       </div>
-
       <div class="stage" id="stage">
         <canvas id="page-canvas"></canvas>
 
-        <!-- basket game overlay -->
         <div id="basket-ui">
-          <div id="tries-display">
+          <div id="tries-row">
             <div class="try-dot" id="dot0"></div>
             <div class="try-dot" id="dot1"></div>
             <div class="try-dot" id="dot2"></div>
           </div>
-          <canvas id="throw-hint"></canvas>
-          <div id="basket-ball"></div>
-          <div id="basket-bin">🗑️</div>
+          <canvas id="hint-canvas"></canvas>
+          <div id="bball"></div>
+          <div id="bbin">🗑️</div>
         </div>
 
-        <!-- breakout game overlay -->
-        <div id="breakout-ui">
-          <div id="bk-lives"></div>
-          <canvas id="bk-canvas"></canvas>
-          <div id="bk-msg"></div>
+        <div id="brk-ui">
+          <canvas id="brk-canvas"></canvas>
+          <div id="brk-msg"></div>
         </div>
 
         <div id="debris"></div>
       </div>
-
       <div class="prog-track">
         <div class="prog-fill" id="prog-fill"></div>
       </div>
       <div style="display:flex;flex-direction:column;align-items:center;gap:.7rem;">
-        <div class="status" id="status-text"></div>
+        <div class="status" id="status"></div>
         <button class="restart-btn" id="restart-btn">↩ destroy another</button>
       </div>
     </div>
 
   </div><!-- #app -->
 
-<!-- Load PDF.js from CDN -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
-<script src="script.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script src="script.js"></script>
 </body>
+
 </html>
